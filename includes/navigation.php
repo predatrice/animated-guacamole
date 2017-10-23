@@ -25,11 +25,15 @@ else{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.php" class="navbar-brand">Hello</a>
-      <p class="navbar-text">
+      <a href="index.php" class="navbar-brand">Chirins Shop</a>
+      <p class="navbar-text navbar-user">
         <?php
         if($_SESSION["username"]){
           echo "Hello ". $_SESSION["username"];
+        }
+        if($_SESSION["profile_image"]){
+          $profile_image = $_SESSION["profile_image"];
+          echo "<img class=\"nav-profile-image\" src=\"profile_images/$profile_image\">";
         }
         ?>
       </p>

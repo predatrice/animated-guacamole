@@ -1,65 +1,83 @@
 <?php
+include("autoloader.php");
 session_start();
-//get database connection
-include("includes/database.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    // user email or username
-    $user_email = $_POST["user"];
+    $user = $_POST["user"];
+    $password = $_POST["password"];
     
-    //check if the user enrered and email address
-    if(filter_var($user_email,FILTER_VALIDATE_EMAIL)){
-        //if true, user entered an email
-        $query = "SELECT * FROM accounts WHERE email=?";
+    //instantiate account class
+    $account = new Account();
+    $login = $account -> authenticate($user,$password);
+    
+    if($login == false){
+        $errors = array();
+        $errors["account"] = "Wrong credentials supplied";
     }
     else{
-        //if false, user entered an email
-        $query = "SELECT * FROM accounts WHERE username=?";
-    }
-    $pass = $_POST["password"];
-    
-    //construct query with email variable
-    //$query = "SELECT * FROM accounts WHERE email='$email'";
-    
-    //create array to store errors
-    $errors = array();
-    
-    //run query
-    $statement = $connection->prepare($query);
-    $statement->bind_param("s",$user_email);
-    $statement->execute();
-    
-    //get the results of the query
-    $userdata = $statement->get_result();
-    
-    //$userdata = $connection->query($query);
-    
-    //check the result
-    if($userdata->num_rows > 0){
-        $user = $userdata->fetch_assoc();
-        if(password_verify($pass,$user["password"])===false){
-            $errors["account"] = "email or password incorrect";
-        }
-        else{
-            $message = "You have been logged in";
-            
-            //create account id as a session variable
-            $account_id = $user["id"];
-            $_SESSION["id"] = $account_id;
-            
-            //create account username as a session variable
-            $username = $user["username"];
-            $_SESSION["username"] = $username;
-            
-            //create account email as a session variable
-            $email = $user["email"];
-            $_SESSION["email"] = $email;
-        }
-    }
-    else{
-        $errors["account"] = "there is no user with the supplied credentials";
+        header("location:account.php");
     }
 }
+//get database connection
+//include("includes/database.php");
+
+// if($_SERVER["REQUEST_METHOD"]=="POST"){
+//     // user email or username
+//     $user_email = $_POST["user"];
+    
+//     //check if the user enrered and email address
+//     if(filter_var($user_email,FILTER_VALIDATE_EMAIL)){
+//         //if true, user entered an email
+//         $query = "SELECT * FROM accounts WHERE email=?";
+//     }
+//     else{
+//         //if false, user entered an email
+//         $query = "SELECT * FROM accounts WHERE username=?";
+//     }
+//     $pass = $_POST["password"];
+    
+//     //construct query with email variable
+//     //$query = "SELECT * FROM accounts WHERE email='$email'";
+    
+//     //create array to store errors
+//     $errors = array();
+    
+//     //run query
+//     $statement = $connection->prepare($query);
+//     $statement->bind_param("s",$user_email);
+//     $statement->execute();
+    
+//     //get the results of the query
+//     $userdata = $statement->get_result();
+    
+//     //$userdata = $connection->query($query);
+    
+//     //check the result
+//     if($userdata->num_rows > 0){
+//         $user = $userdata->fetch_assoc();
+//         if(password_verify($pass,$user["password"])===false){
+//             $errors["account"] = "email or password incorrect";
+//         }
+//         else{
+//             $message = "You have been logged in";
+            
+//             //create account id as a session variable
+//             $account_id = $user["id"];
+//             $_SESSION["id"] = $account_id;
+            
+//             //create account username as a session variable
+//             $username = $user["username"];
+//             $_SESSION["username"] = $username;
+            
+//             //create account email as a session variable
+//             $email = $user["email"];
+//             $_SESSION["email"] = $email;
+//         }
+//     }
+//     else{
+//         $errors["account"] = "there is no user with the supplied credentials";
+//     }
+// }
 ?>
 <!doctype html>
 <html>

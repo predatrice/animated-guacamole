@@ -61,9 +61,67 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       $updatepassword=true;
     }
   }
+  //===============================================PROFILE IMAGE
+  //check if there is an image uploaded
+  if( $_FILES["profile-image"]["tmp_name"] ){
+    //create an array to collect image errors
+    $image_errors = array();
+    
+    //get the temp name of file
+    $uploaded_file = $_FILES["profile-image"]["tmp_name"];
+    
+    //check for exif data (theoretically non image files do not have exif data)
+    $img_type = exif_imagetype($uploaded_file);
+    if($img_type > 3){
+      array_push( $image_errors, "only jpg,png or gif can be used");
+    }
+    
+    //get the file dimensions (image width and height)
+    $img_dim = getimagesize($uploaded_file);
+    if($img_dim === false){
+      array_push( $image_errors, "file is not an image");
+    }
+    
+    //check image file size(in MB)
+    $img_size = filesize($uploaded_file);
+    if($img_size > 1048576*2){
+      array_push( $image_errors, "max size is 2MB" );
+    }
+    
+    //check if file name starts with a dot
+    if(strpos($_FILES["profile-image"]["name"],".",0 )===0 ){
+      array_push( $image_errors, "illegal file type" );
+    }
+    
+    //if there are image errors
+    if( count($image_errors) > 0 ){
+      $errors["image"] = implode($image_errors," and ");
+    }
+    //if there are no errors
+    else{
+      $uploaded_name = $_FILES["profile-image"]["name"];
+      $filename = pathinfo($uploaded_name,PATHINFO_FILENAME);
+      $fileextension = strtolower( pathinfo($uploaded_name,PATHINFO_EXTENSION) );
+      $newfile = uniqid("image_",true) . "." . $fileextension;
+      //move uploaded file to destination directory
+      move_uploaded_file($_FILES["profile-image"]["tmp_name"],"profile_images/".$newfile);
+      
+      //insert image name into database
+      $profile_image_query = "UPDATE accounts SET profile_image=? WHERE id=?";
+      $statement = $connection -> prepare( $profile_image_query  );
+      $statement -> bind_param("si",$newfile,$account_id);
+      if( $statement -> execute() === false ){
+        $errors["profile"] = "error updating profile image";
+      }
+    }
+  }
+  
+  //if there are no errors
   if(count($errors)==0){
+    //set updating to false, to make the form populated from the database, after update has been carried out
     $updating = false;
     //update accounts table without updating password
+    //prevent update with password set to blank
     $account_id = $_SESSION["id"];
     if($updatepassword==false){
       $account_update_query = "UPDATE accounts SET username=?,email=? WHERE id=?";
@@ -168,6 +226,7 @@ if($updating==false){
   $user_query = "SELECT 
                 accounts.email AS email,
                 accounts.username AS username,
+                accounts.profile_image AS profile_image,
                 user_details.first_name AS firstname,
                 user_details.last_name AS lastname,
                 user_details.unit_number AS unit,
@@ -194,6 +253,7 @@ if($updating==false){
   //get account details from userdata array
   $username = $userdata["username"];
   $email = $userdata["email"];
+  $profile_image = $userdata["profile_image"];
   //get personal details from userdata array
   $firstname = $userdata["firstname"];
   $lastname = $userdata["lastname"];
@@ -215,6 +275,23 @@ if($countries_result->num_rows > 0){
     array_push($countries,$row);
   }
 }
+//set default country
+$default_country_code = "AU";
+if($country){
+  $default_country_code = $country;
+}
+
+//Get data for states/subdivisions
+$regions_query = "SELECT sub_id, 
+                  country_code, 
+                  sub_region_code,
+                  sub_region_name
+                  FROM countries_subdivisions
+                  WHERE country_code=?";
+$regions_statement = $connection->prepare($regions_query);
+$regions_statement->bind_param("s",$default_country_code);
+$regions_statement->execute();
+$regions_result = $regions_statement->get_result();
 
 ?>
 <!doctype html>
@@ -223,10 +300,23 @@ if($countries_result->num_rows > 0){
   <body>
     <?php include("includes/navigation.php"); ?>
     <div class="container">
-      <form id="account-update" action="account.php" method="post">
+      <form id="account-update" action="account.php" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-6">
             <h2>Account Details</h2>
+              <div class="form-group">
+                
+                <div class="profile-group">
+                  <img id="profile-preview" src="<?php echo "profile_images/".$profile_image ?>" style="width:150px;">
+                  <label for="profile-image" class="btn btn-default profile-btn">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <input type="file" id="profile-image" name="profile-image" style="display:none;">
+                  </label>
+                </div>
+                <span id="profile-img-info"></span>
+                <span id="image-errors" class="help-block"></span>
+                
+              </div>
               <?php 
                 // $username = $userdata["username"];
                 if($errors["username"]){
@@ -327,11 +417,31 @@ if($countries_result->num_rows > 0){
                   <input  type="text" class="form-control" id="postcode" name="postcode" placeholder="2000" value="<?php echo $postcode; ?>">
                 </div>
               </div>
-              <!--State-->
+             <!--State-->
               <div class="col-md-5">
                 <div class="form-group">
-                  <label for="suburb">State</label>
-                  <input  type="text" class="form-control" id="state" name="state" placeholder="New South Wales" value="<?php echo $state; ?>">
+                  <label for="state">State</label>
+                  <!--<input  type="text" class="form-control" id="state" name="state" placeholder="New South Wales" value="<?php echo $state; ?>">-->
+                  <select name="state" class="form-control" id="state" placeholder="state or province">
+                    <?php
+                    //<option value="default-state">Default</option>
+                    if($regions_result->num_rows > 0){
+                      while($region = $regions_result->fetch_assoc()){
+                        $id=$region["sub_id"];
+                        $code=$region["sub_region_code"];
+                        $country_code = $region["country_code"];
+                        $name = $region["sub_region_name"];
+                        if($code == $state){
+                          $selected = "selected";
+                        }
+                        else{
+                          $selected = "";
+                        }
+                        echo "<option $selected value=\"$code\">$name</option>";
+                      }
+                    }
+                    ?>
+                  </select>
                 </div>
               </div>
             </div>
@@ -339,7 +449,7 @@ if($countries_result->num_rows > 0){
               <label for="country">Country</label>
               <select id="country" class="form-control" name="country">
                   <?php
-                  $default_country_code = "AU";
+                  //$default_country_code = "AU";
                     if($country){
                     $default_country_code = $country;
                   }
@@ -392,5 +502,8 @@ if($countries_result->num_rows > 0){
         </div>
       </form>
     </div>
+    <!--add states.js file-->
+    <script src="js/states.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>
