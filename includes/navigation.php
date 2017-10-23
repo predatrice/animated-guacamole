@@ -59,3 +59,6 @@ else{
     </div>
   </nav>
 </header>
+<div class="container">
+  <?php include("includes/shopping.php"); ?> 
+</div>
