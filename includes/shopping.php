@@ -1,3 +1,50 @@
+<?php
+// include("includes/database.php");
+//get the main categories
+$main_query = "SELECT category_id,category_name FROM categories WHERE parent_id = 0";
+
+$mainstatement = $connection -> prepare($main_query);
+$mainstatement -> execute();
+$mainresult = $mainstatement -> get_result();
+if($mainresult -> num_rows > 0){
+  $main_categories = array();
+  while($row = $mainresult -> fetch_assoc()){
+    array_push($main_categories, $row);
+  }
+}
+//get the child categories
+$query = "SELECT t1.category_name AS category, 
+t2.category_name AS subcategory,
+t2.category_id AS id
+FROM categories AS t1
+LEFT JOIN categories AS t2 
+ON t2.parent_id = t1.category_id";
+
+$substatement = $connection -> prepare($query);
+$substatement -> execute();
+$subresult = $substatement -> get_result();
+if($subresult -> num_rows > 0){
+  $sub_categories = array();
+  while($row = $subresult -> fetch_assoc()){
+    array_push($sub_categories, $row);
+  }
+}
+
+// foreach($main_categories as $main){
+//   $category = $main["category_name"];
+//   //echo "<p>category=$category</p>";
+//   //find the subcategories
+//   foreach($sub_categories as $sub){
+//     $parent = $sub["category"];
+//     $subcat = $sub["subcategory"];
+//     if($parent == $category){
+//       //echo "<p>subcategory=$subcat</p>";
+//     }
+//   }
+// }
+
+?>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,73 +55,52 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Categories</a>
+      <a class="navbar-brand" href="index.php">Categories</a>
       </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">      
-        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Woman <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Man <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kids <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Medals <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>                
+      <?php
+      foreach($main_categories as $main){
+        $category = $main["category_name"];
+        //find if this category has children
+        $haschildren = false;
+        foreach($sub_categories as $sub){
+          $parent = $sub["category"];
+          $subcat = $sub["subcategory"];
+          if($parent == $category){
+            $haschildren = true;
+          }
+        }
+        if($haschildren==true){
+          $dropdown_class = "dropdown";
+          $link_attribute = "class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\"";
+          $caret = "<span class=\"caret\"></span>";
+        }
+        else{
+          $dropdown_class = "";
+          $link_attribute = "";
+          $caret ="";
+        }
+        echo "<li class=\"$dropdown_class\">
+                <a href=\"#\" $link_attribute >$category $caret</a>";
+        if($haschildren == true){
+          echo "<ul class=\"dropdown-menu\">";
+          foreach($sub_categories as $sub){
+            $cat_id = $sub["id"];
+            $parent = $sub["category"];
+            $subcat = $sub["subcategory"];
+            if($parent == $category){
+              echo "<li><a href=\"index.php?category=$cat_id&page=1\">$subcat</a></li>";
+            }
+          }
+          echo "</ul>";
+        }
+        echo "</li>";
+      }
+      ?>
+           
       </ul>
          
       <div class=" text-right navbar-right">
@@ -83,10 +109,16 @@
           <span class="badge">2</span>
           </a>
           </div>
+          <div class=" text-right navbar-right">
+          <a href="shopping_cart.php" class="navbar-text">
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="badge">5</span>
+          </a>
+          </div>
         <form class="navbar-form navbar-right" id="search-form" method="get" action="search.php">
-         <div class="form-group">
+        <div class="form-group">
           <input type="text" class="form-control" name="search-query" placeholder="Search">
-           </div>
+          </div>
             <button type="submit" class="btn btn-default">Search</button>
       </form>
     </div><!-- /.navbar-collapse -->
