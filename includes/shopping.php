@@ -110,9 +110,17 @@ if($subresult -> num_rows > 0){
           </a>
           </div>
           <div class=" text-right navbar-right">
-          <a href="shopping_cart.php" class="navbar-text">
+          <a href="wishlist.php" class="navbar-text">
+             <?php 
+              //get total of wishlist items
+              if($_SESSION["id"]){
+                $user_id = $_SESSION["id"];
+                $wish = new WishList($user_id);
+                $wish_count = $wish -> getCount();
+              }
+              ?>
             <span class="glyphicon glyphicon-heart"></span>
-            <span class="badge">5</span>
+            <span class="badge wish-count"><?php if($wish_count){echo $wish_count;}?></span>
           </a>
           </div>
         <form class="navbar-form navbar-right" id="search-form" method="get" action="search.php">

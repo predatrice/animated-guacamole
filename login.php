@@ -1,7 +1,7 @@
 <?php
 include("autoloader.php");
 session_start();
-
+include("includes/database.php");
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $user = $_POST["user"];
     $password = $_POST["password"];

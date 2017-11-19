@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("autoloader.php");
 include("includes/database.php");
 
 //handle GET request for pages

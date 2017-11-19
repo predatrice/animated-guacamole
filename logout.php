@@ -6,6 +6,8 @@ session_start();
 unset($_SESSION["username"]);
 unset($_SESSION["email"]);
 unset($_SESSION["profile_image"]);
+unset($_SESSION["admin"]);
+unset($_SESSION["id"]);
 
 //redicrect user to home page
 header("location: index.php");

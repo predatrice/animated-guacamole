@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("autoloader.php");
 include("includes/database.php");
 //if user is not logged in, eg no session vars, redirect to login page
 if(isset($_SESSION["email"])==false || isset($_SESSION["id"])==false){
