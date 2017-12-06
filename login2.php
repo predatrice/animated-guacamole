@@ -1,8 +1,7 @@
 <?php
-session_start();
 include("autoloader.php");
 include("includes/database.php");
-
+session_start();
 
 //See if there are any GET parameters passed
 if(count($_GET) > 0){
@@ -14,6 +13,9 @@ if(count($_GET) > 0){
   }
   $url_params = http_build_query($params);
   $register_url = "register.php" . "?" . $url_params;
+}
+else{
+  $register_url = "register.php";
 }
 ?>
 <!doctype html>
@@ -65,7 +67,12 @@ include("includes/head.php");
     <script>
       <?php
       $js_vars = new GetToVars($_GET);
-      echo $js_vars;
+      if( $js_vars ){
+        echo $js_vars;
+      }
+      else{
+        echo "productid=0";
+      }
       ?>
     </script>
     <script src="js/login.js"></script>

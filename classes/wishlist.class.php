@@ -111,6 +111,24 @@ class WishList extends Database{
       return $listitems;
     }
   }
+  public function getJSONList(){
+    //get list items and return it as JSON array
+    $query = "SELECT product_id FROM wishlist_items WHERE wishlist_id=?";
+    $statement = $this -> conn -> prepare( $query );
+    $statement -> bind_param( "i" , $this->list_id );
+    $statement -> execute();
+    $result = $statement -> get_result();
+    $products = array();
+    if($result -> num_rows > 0){
+      while($row = $result -> fetch_assoc() ){
+        array_push($products,$row);
+      }
+      return json_encode($products);
+    }
+    else{
+      return false;
+    }
+  }
   public function getCount(){
     //query to count items belonging to a user
     $count_query = "SELECT COUNT(product_id) AS total 

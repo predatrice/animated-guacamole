@@ -143,7 +143,7 @@ $total_pages = ceil( $total / $items_per_page );
           
           echo "<div class=\"col-md-3\">";
           echo "<h3 class=\"product-name cap\">$name</h3>";
-          echo "<img class=\"img-responsive\" src=\"products_images/$image\">";
+          echo "<img class=\"img-responsive\" src=\"products/$image\">";
           echo "<p class=\"product-description\">$description</p>";
           echo "<h4 class=\"price\">$price</h4>";
           echo "<a href=\"product_detail.php?id=$id\">Details</a>";

@@ -254,7 +254,7 @@ $cat_result = $cat_statement->get_result();
               echo "<div class=\"col-md-3\">
               <h3 class=\"product-name\">$name </h3>
               <a href=\"product_detail.php?id=$id\">
-              <img class=\"img-responsive\" src=\"products_images/$image\">
+              <img class=\"img-responsive\" src=\"products/$image\">
               </a>
               <h4 class=\"price\">$price</h4>
               <p class=\"product-description\">$description</p>
@@ -287,7 +287,7 @@ $cat_result = $cat_statement->get_result();
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h3>This is a footer</h3>
+           <!--<h3>Chirin's Shop</h3>-->
           </div>
         </div>
       </div>

@@ -1,20 +1,31 @@
 <?php
 // add intelligence to the navigation bar to show links depending on 
 // whether the user is logged in or not
+//if user is not logged in
 if(!$_SESSION["email"]){
   $navitems = array(
     "Home"=>"index.php",
     "Sign Up"=>"register.php",
-    "Sign In"=>"login.php",
+    "Sign In"=>"login2.php"
     );
 }
-else{
+//if user is logged in
+if($_SESSION["email"] && !$_SESSION["admin"]){
   $navitems = array(
     "Home"=>"index.php",
     "My Account"=>"account.php",
     "Sign Out"=>"logout.php"
     );
 }
+if($_SESSION["email"] && $_SESSION["admin"]){
+  $navitems = array(
+    "Home"=>"index.php",
+    "My Account"=>"account.php",
+    "Sign Out"=>"logout.php",
+    "Admin" => "admin.php"
+    );
+}
+
 ?>
 <header>
   <nav class="navbar navbar-default">

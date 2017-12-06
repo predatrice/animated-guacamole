@@ -106,7 +106,7 @@ if($subresult -> num_rows > 0){
       <div class=" text-right navbar-right">
           <a href="shopping_cart.php" class="navbar-text">
           <span class="glyphicon glyphicon-shopping-cart"></span>
-          <span class="badge">2</span>
+          <span class="badge cart-count"><?php if($cart_count){ echo $cart_count; } else{ echo "";}?></span>
           </a>
           </div>
           <div class=" text-right navbar-right">

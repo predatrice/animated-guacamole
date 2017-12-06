@@ -13,3 +13,144 @@
 [15-Nov-2017 04:12:44 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
 [15-Nov-2017 04:12:44 UTC] PHP Stack trace:
 [15-Nov-2017 04:12:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:37 UTC] PHP Fatal error:  Call to undefined method Account::checkIfUserExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 9
+[20-Nov-2017 03:16:37 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:37 UTC] PHP Fatal error:  Call to undefined method Account::checkIfUserExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 9
+[20-Nov-2017 03:16:37 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:44 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:44 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:45 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:45 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:45 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:45 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:45 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:45 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:45 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:45 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:46 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:46 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:46 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:46 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:46 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:46 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:46 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:46 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:16:46 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:16:46 UTC] PHP Stack trace:
+[20-Nov-2017 03:16:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[20-Nov-2017 03:32:28 UTC] PHP Fatal error:  Call to undefined method Account::checkIfEmailExists() in /home/ubuntu/workspace/ajax/ajaxregister.php on line 22
+[20-Nov-2017 03:32:28 UTC] PHP Stack trace:
+[20-Nov-2017 03:32:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxregister.php:0
+[22-Nov-2017 04:19:31 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:31 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:38 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:39 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:39 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:46 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:49 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[22-Nov-2017 04:19:51 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/ajax/ajaxregister.php on line 49
+[04-Dec-2017 03:10:26 UTC] PHP Fatal error:  Call to undefined method ShoppingCart::addToCart() in /home/ubuntu/workspace/ajax/ajaxcart.php on line 15
+[04-Dec-2017 03:10:26 UTC] PHP Stack trace:
+[04-Dec-2017 03:10:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxcart.php:0
+[04-Dec-2017 03:10:43 UTC] PHP Fatal error:  Call to undefined method ShoppingCart::addToCart() in /home/ubuntu/workspace/ajax/ajaxcart.php on line 15
+[04-Dec-2017 03:10:43 UTC] PHP Stack trace:
+[04-Dec-2017 03:10:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxcart.php:0
+[04-Dec-2017 03:13:49 UTC] PHP Fatal error:  Call to undefined method ShoppingCart::addToCart() in /home/ubuntu/workspace/ajax/ajaxcart.php on line 15
+[04-Dec-2017 03:13:49 UTC] PHP Stack trace:
+[04-Dec-2017 03:13:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxcart.php:0
+[04-Dec-2017 03:14:40 UTC] PHP Fatal error:  Call to undefined method ShoppingCart::addToCart() in /home/ubuntu/workspace/ajax/ajaxcart.php on line 15
+[04-Dec-2017 03:14:40 UTC] PHP Stack trace:
+[04-Dec-2017 03:14:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxcart.php:0
+[06-Dec-2017 05:03:46 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 87
+[06-Dec-2017 05:03:46 UTC] PHP Stack trace:
+[06-Dec-2017 05:03:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:03:46 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:04:02 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 87
+[06-Dec-2017 05:04:02 UTC] PHP Stack trace:
+[06-Dec-2017 05:04:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:04:02 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:04:19 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.class.php on line 87
+[06-Dec-2017 05:04:19 UTC] PHP Stack trace:
+[06-Dec-2017 05:04:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:04:19 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:06:33 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:06:33 UTC] PHP Stack trace:
+[06-Dec-2017 05:06:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:06:33 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:06:52 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:06:52 UTC] PHP Stack trace:
+[06-Dec-2017 05:06:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:06:52 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:09:10 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:09:10 UTC] PHP Stack trace:
+[06-Dec-2017 05:09:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:09:10 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:09:55 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:09:55 UTC] PHP Stack trace:
+[06-Dec-2017 05:09:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:09:55 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:11:46 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:11:46 UTC] PHP Stack trace:
+[06-Dec-2017 05:11:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:11:46 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:12:15 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:12:15 UTC] PHP Stack trace:
+[06-Dec-2017 05:12:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:12:15 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:15:41 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:15:41 UTC] PHP Stack trace:
+[06-Dec-2017 05:15:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:15:41 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:17:34 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:17:34 UTC] PHP Stack trace:
+[06-Dec-2017 05:17:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:17:34 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:20:02 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:20:02 UTC] PHP Stack trace:
+[06-Dec-2017 05:20:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:20:02 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15
+[06-Dec-2017 05:24:23 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/classes/account.php on line 87
+[06-Dec-2017 05:24:23 UTC] PHP Stack trace:
+[06-Dec-2017 05:24:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/ajax/ajaxlogin.php:0
+[06-Dec-2017 05:24:23 UTC] PHP   2. Account->authenticate() /home/ubuntu/workspace/ajax/ajaxlogin.php:15

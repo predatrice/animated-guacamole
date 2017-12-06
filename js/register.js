@@ -78,6 +78,7 @@ $(document).ready(
         dataobj.email = $("#email").val();
         dataobj.password1 = $("#password1").val();
         dataobj.password2 = $("#password2").val();
+        dataobj.action = "register";
         //make ajax request
         $.ajax({
           type: 'post',
@@ -85,13 +86,37 @@ $(document).ready(
           data: dataobj,
           dataType: 'json',
           encode: true
+        })
+        .done( (response) => {
+          console.log(response);
+          if(response.success == true){
+            //registration successful
+            displayAlert("success","registration successful");
+          }
+          else{
+            displayAlert("warning","registration unsuccessful" + " " + response.errors);
+          }
         });
       }
     );
   }
 );
 
-
+function displayAlert(type,message){
+  $(".alert").remove();
+  let template = $("#register-template").html().trim();
+  let clone = $(template);
+  //add message
+  $(clone).find('.message').text(message);
+  
+  if(type == "success"){
+    $(clone).addClass('alert-success');
+  }
+  else{
+    $(clone).addClass('alert-danger');
+  }
+  $('#registration').append(clone);
+}
 
 function setFormError(elm){
   $(elm).removeClass("has-success");
@@ -160,7 +185,7 @@ function checkEmail(email){
     //check if username exists
     let dataobj = new Object();
     dataobj.action = "checkemail";
-    dataobj.username = email;
+    dataobj.email = email;
     $.ajax({
       type: 'post',
       url: 'ajax/ajaxregister.php',
@@ -169,16 +194,18 @@ function checkEmail(email){
       encode: true
     })
     .done(function(response){
+      // console.log(response);
       if(response.success == false){
         setFormError( $('[data-group="email"]') );
         displayError($('[data-error="email"]'), 'email already used');
-        //user exists
-        return false;
+        //email exists
+        
         validated.email = false;
+        return false;
       }
       else{
-        return true;
         validated.email = true;
+        return true;
       }
     });
     

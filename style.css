@@ -38,6 +38,17 @@
 img{
   max-width: 100%;
 }
+/*----------------wishlist section*/
+.wishlist-description{
+  min-height: 80px;
+}
+.flex-row{
+  display:flex;
+  flex-wrap:wrap;
+}
+.flex-row-nowrap{
+  display:flex;
+}
 /*spinner*/
 .spinner{
   animation:spin 2s;
@@ -54,4 +65,35 @@ img{
   to{
     transform: rotate(360deg);
   }
+}
+
+.no-wish{
+  width:100%;
+  color:#ccc;
+  font-size:48px;
+  user-select:none;
+  margin-top:100px;
+}
+body{
+  margin-bottom: 100px;
+}
+/*---------shopping cart-------------*/
+.cart-row h3{
+  margin-top:0;
+}
+.cart-row{
+  margin-top:20px;
+}
+.cart-row input[name="quantity"]{
+  max-width:54px;
+}
+.cart-row input[data-type="price"]{
+  max-width:80px;
+}
+.no-border{
+  border:solid transparent;
+  box-shadow: 0px 0px 0px transparent;
+}
+.red{
+  color:red;
 }

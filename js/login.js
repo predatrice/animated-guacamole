@@ -10,10 +10,17 @@ function onLogin(submitevent){
   submitevent.preventDefault();
   $('.alert').remove();
   $('button[type="submit"]').attr("disabled","");
-  //get data from target form
-  let formdata = new FormData(submitevent.target);
+  //get data from target form -- DOES NOT WORK ON SAFARI
+  //let formdata = new FormData(submitevent.target);
   //create login data to send to server
-  let logindata = {user: formdata.get('user'), password: formdata.get('password')};
+  //let logindata = {user: formdata.get('user'), password: formdata.get('password')};
+  let logindata = new Object();
+  logindata.user = $('input[name="user"]').val();
+  logindata.password = $('input[name="password"]').val();
+  if( typeof cart_uid !== 'undefined'){
+    logindata.cart_uid = cart_uid;
+  }
+  console.log(logindata);
   //send data to server via ajax request
   $.ajax({
     type: 'post',
@@ -23,6 +30,7 @@ function onLogin(submitevent){
     encode: true
   })
   .done( function(response){
+    console.log(response);
     if(response.success == true){
       //login is successful
       //create alert success
@@ -30,14 +38,26 @@ function onLogin(submitevent){
       //check if there are any item to add to a list (wish list or shopping list)
       let accountid = response.userid;
       //productid was added by php from the GET request
-      if(addItemsToList(productid,accountid)){
-        console.log("success");
+      
+      if( typeof productid !== 'undefined' ){
+        addItemsToList(productid,accountid);
       }
-      window.setTimeout(function(){window.location.href="account.php"},1500);
+      //if redirect is defined decode the base64 using atob()
+      if( typeof redirect !== 'undefined' ){
+        redirect = atob( redirect );
+      }
+      //if not defined set to a page
+      else{
+        redirect = "account.php";
+      }
+      window.setTimeout(
+        function(){window.location.href=redirect},
+        1500);
     }
     else{
       //login is unsuccessful
       displayAlert("warning","login unsuccessful");
+      //remove the disabled attribute from the login button, so user can try again
       $('button[type="submit"]').removeAttr("disabled");
     }
   });

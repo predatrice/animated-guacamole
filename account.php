@@ -114,6 +114,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       if( $statement -> execute() === false ){
         $errors["profile"] = "error updating profile image";
       }
+      else{
+        $_SESSION["profile_image"] = $newfile;
+      }
     }
   }
   

@@ -19,14 +19,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   }
   if($_POST["action"] == "checkemail"){
     $email = $_POST["email"];
-    $check = $account -> checkIfEmailExists($email);
-    if($check == true){
+    $emailcheck = $account -> checkIfEmailExists($email);
+    if($emailcheck === true){
       //email exists
       $response["success"] = false;
     }
     else{
       //email does not exist
       $response["success"] = true;
+    }
+    echo json_encode($response);
+  }
+  if($_POST["action"] == "register"){
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password1 = $_POST["password1"];
+    $password2 = $_POST["password2"];
+    if($account -> register($username, $email, $password1, $password2)){
+      //registration successful
+      $response["success"] = true;
+    }
+    else{
+      $response["success"] = false;
+      $response["errors"] = implode(" ",$account -> getErrors());
     }
     echo json_encode($response);
   }

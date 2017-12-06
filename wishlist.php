@@ -32,7 +32,7 @@ else{
       <div class="row">
         <h2 class="col-md-12"><?php echo ucfirst($_SESSION["username"]) ."'s";?> WishList</h2>
       </div>
-      <div class="row flex-row">
+      <div class="row flex-row" data-name="wish-row">
       <?php
       if( count($items) > 0){
       $counter = 0;
@@ -50,7 +50,7 @@ else{
             $description = new TrimWords($item["description"],5)."...";
             echo "<div class=\"col-md-2 col-sm-3 col-xs-6\" data-wishlist-item=\"$id\">";
             echo "<h3 class=\"product-name\">$name</h3>";
-            echo "<img class=\"img-responsive\" src=\"products_images/$image\">";
+            echo "<img class=\"img-responsive\" src=\"products/$image\">";
             echo "<p class=\"price\">$price</p>";
             echo "<p class=\"wishlist-description\">$description</p>";
             //button toolbar

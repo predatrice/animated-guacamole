@@ -8,4 +8,27 @@
     <link href="style.css" rel="stylesheet">
     <script src="components/jquery/dist/jquery.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-  </head>
+    <?php
+  //get the total and items from wishlist
+  //get total of wishlist items
+  if($_SESSION["id"]){
+    $user_id = $_SESSION["id"];
+    $wish = new WishList($user_id);
+    //get the total of 
+    $wish_count = $wish -> getCount();
+    $wish_items = $wish -> getJSONList();
+    //output array of wishlist items into the javascript scope
+    if( $wish_count == 0 ){
+      //set wish items as an empty array
+      $wish_items = "[]";
+    }
+    echo "<script>var wishlist_items = $wish_items; </script>";
+  }
+  $cart = new ShoppingCart();
+  $cart_count = $cart -> getCount();
+  //we output the count in navigation
+  //get cart uid
+  $uid = $cart -> getCartId();
+  echo "<script>var cart_uid='$uid';</script>"
+  ?>
+</head>

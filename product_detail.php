@@ -99,10 +99,10 @@ $product_detail = $products[0];
             <form id="cart-form" class="form-inline" action="product_detail.php" method="post">
               <div class="form-group">
                 <label>Quantity</label>
-                <input class="form-control product-quantity" type="number" step="1" min="1" value="1">
+                <input class="form-control product-quantity" name="quantity" type="number" step="1" min="1" value="1">
               </div>
               <div class="form-group">
-                <button class="btn btn-info" type="submit" name="target" value="cart">
+                  <button class="btn btn-info" type="submit" name="cart" value="cart" data-id="<?php echo $product_id; ?>">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   Add to Cart
                 </button>
@@ -118,6 +118,7 @@ $product_detail = $products[0];
       </div>
     </div>
     <script src="js/wishlist.js"></script>
+    <script src="js/shoppingcart.js"></script>
     <template id="spinner-template">
       <span class="spinner-container">
         <img class="spinner" src="graphics/spinner.png">

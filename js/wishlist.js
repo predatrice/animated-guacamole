@@ -1,6 +1,7 @@
 var wish_url = "ajax/ajaxwishlist.php";
 var login_url = "login2.php";
 var spinner_image = "graphics/spinner.png";
+var wish_btn_text = "in your wish list";
 $(document).ready(function(){
   //preload spinner image
   let img = document.createElement('img');
@@ -11,9 +12,16 @@ $(document).ready(function(){
     var total_wish = $('[data-wishlist-item]').length;
     }
   else{
-    var total_wish = parseInt($('.wish-count').text());
+    if( parseInt( $('.wish-count').text() ) ){
+      var total_wish = parseInt($('.wish-count').text());
+    }
+    else{
+      var total_wish = 0;
+    }
   }
   
+  //if wishlist empty
+  showEmptyNotice(total_wish);
   //delete an item from wishlist
   $('button[name="delete"]').click(function(event){
     event.preventDefault();
@@ -44,6 +52,7 @@ $(document).ready(function(){
         setTimeout(function(){
           $(wishlist_item).remove();
         },1500);
+        showEmptyNotice(total_wish);
       }
     });
   });
@@ -51,6 +60,7 @@ $(document).ready(function(){
   //Add an item to wishlist
   $('button[name="add"]').click(function(event){
     event.preventDefault();
+    let button = event.target;
     let product_id = $(event.target).data("id");
     let list_id = $(event.target).data("list-id");
     let user_id = $(event.target).data("user-id");
@@ -71,30 +81,56 @@ $(document).ready(function(){
     })
     .done(function(response){
       if(response.success == true){
-        //remove the element that has been clicked
+        let button = event.target;
         total_wish=total_wish+1;
-        // console.log(total_wish);
         updateWishCount(total_wish);
         //remove spinner after 1.5 seconds
         setTimeout(function(){
           //remove the spinner
-          removeSpinner(event.target);
+          removeSpinner(button);
+          //change text inside button
+          $(button).text(wish_btn_text);
+          //disable button
+          $(button).attr('disabled','');
           //add a check mark
-          addCheck(event.target);
+          addCheck(button);
         },1500);
       }
-      else{
+      else if(response.success == false && user_id == false){
         //adding item to wishlist has failed (because user is not logged in)
         //remove spinner
         removeSpinner(event.target);
         //take user to login page and send product id to login page via GET
-        let redirect_url = login_url + "?" + "action=add&list=wish&productid=" + product_id;
+        //get current page and redirect user back to it after login
+        let current_page = window.location.href;
+        //create the redirect variable and encode as 
+        //base64 with btoa() to avoid illegal characters which will break the url
+        let redirect_page = '&redirect=' + btoa(current_page);
+        let redirect_url = login_url + "?" + "action=add&list=wish&productid=" + product_id + redirect_page;
         //redirect to login page
         //encode the URI to ensure it does not contain unfriendly characters
         window.location.href = encodeURI( redirect_url );
       }
+      else{
+        removeSpinner(event.target);
+      }
     });
   });
+  //if the item exists in the wishlist, mark it with the check
+  //and disable the add button wishlist items array is created in
+  //the head.php section
+  ( function() {
+    let button = $('button[name="add"]');
+    let id = button.attr('data-id');
+    let len = wishlist_items.length;
+    for( let i=0 ; i < len; i++ ){
+      if(wishlist_items[i].product_id == id){
+        button.text(wish_btn_text);
+        addCheck(button);
+        button.attr( 'disabled' , '' );
+      }
+    }
+  }($,wishlist_items));
 });
 
 function addSpinner(elm){
@@ -120,5 +156,12 @@ function updateWishCount(total){
   }
   else{
     $('.wish-count').empty();
+  }
+}
+
+function showEmptyNotice(total){
+  if(total == 0){
+    let notice = '<h1 class="text-center no-wish">You are wishless. Make a wish?</h1>';
+    $('[data-name="wish-row"]').append(notice);
   }
 }

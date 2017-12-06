@@ -14,6 +14,9 @@ if(count($_GET) > 0){
   $url_params = http_build_query($params);
   $login_url = "login2.php" . "?" . $url_params;
 }
+else{
+  $login_url = "login2.php";
+}
 ?>
 <!doctype html>  
 <html>
@@ -25,7 +28,7 @@ include("includes/head.php");
   <?php include("includes/navigation.php"); ?>
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
         <form id="registration" action="register.php" method="post">
           <h2>Register for an account</h2>
 
@@ -70,3 +73,21 @@ include("includes/head.php");
   <script src="js/register.js"></script>
 </body>
 </html>
+
+<template id="register-template">
+  <div class="alert alert-dismissable">
+    <button class="close" type="button" data-dismiss="alert">
+      &times;
+    </button>
+    <p class="message"></p>
+  </div>
+</template>
+<template id="spinner-template">
+  <span class="spinner-container">
+    <img class="spinner" src="graphics/spinner.png">
+  </span>
+</template>
+<template id="check-template">
+  <span class="glyphicon glyphicon-ok">
+  </span>
+</template>
