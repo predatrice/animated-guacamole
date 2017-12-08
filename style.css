@@ -97,3 +97,40 @@ body{
 .red{
   color:red;
 }
+/*---------categories-------------*/
+.full-menu{
+  width:100%;
+}
+.full-menu > li > a{
+  padding:15px 10px;
+}
+
+/*---------pagination*/
+.pagination-text{
+  margin:20px 0;
+  padding:6px 0;
+}
+
+@media only screen and (max-width:768px){
+  /*.product-column{*/
+  /*  min-height:600px;*/
+  /*}*/
+  div[data-group="quantity"]{
+    max-width:120px;
+  }
+  .cart-row input[name="quantity"]{
+    max-width:200px;
+  }
+}
+
+@media only screen and (max-width:991px){
+  .flex-row .product-column:first-child, 
+  .flex-row .product-column:nth-child(2){
+    min-width:100%;
+  }
+  .flex-row .product-column:first-child img,
+  .flex-row .product-column:nth-child(2) img
+  {
+    width:100%;
+  }
+}

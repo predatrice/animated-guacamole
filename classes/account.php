@@ -14,7 +14,7 @@ class Account extends Database{
     $this -> errors = array();
   }
   
-  //Account Registration
+  //Account Registration---------------------------------------
   public function register($name,$email,$password1,$password2){
     //array to store errors
     $register_errors = array();
@@ -78,11 +78,11 @@ class Account extends Database{
     }
   }
   
-  //Account authentication
+  //Account authentication----------------------------------
   public function authenticate($name_or_email,$password){
     //return true if successful
     $query = "SELECT id,username,email,password,profile_image FROM accounts 
-            WHERE username=? OR email=? AND status=1";
+            WHERE ( username=? OR email=? ) AND status=1";
     $statement = $this -> conn -> prepare($query);
     $statement -> bind_param("ss",$name_or_email,$name_or_email);
     if( $statement -> execute() ){
@@ -109,6 +109,7 @@ class Account extends Database{
           $_SESSION["admin"] = 1;
         }
         $this -> account_id = $id;
+        $this -> updateActivity($id);
         return true;
       }
       else{
@@ -132,6 +133,17 @@ class Account extends Database{
       return true;
     }
     //user is not admin
+    else{
+      return false;
+    }
+  }
+  public function setAccountStatus($account_id,$status){
+    $query = "UPDATE accounts SET status= ? WHERE id= ?";
+    $statement = $this -> conn -> prepare( $query );
+    $statement -> bind_param("ii",$status,$account_id);
+    if( $statement -> execute() ){
+      return true;
+    }
     else{
       return false;
     }
@@ -240,13 +252,18 @@ class Account extends Database{
       exit();
     }
     else{
-      $query = "SELECT id,
-      username,
-      email,
-      profile_image,
-      created,
-      status
-      FROM accounts";
+      $query = "SELECT 
+      accounts.id,
+      accounts.username,
+      accounts.email,
+      accounts.profile_image,
+      accounts.created,
+      accounts.lastseen,
+      accounts.status,
+      admin.id AS admin
+      FROM accounts
+      LEFT JOIN admin
+      ON accounts.id = admin.userid";
       $statement = $this -> conn -> prepare( $query );
       $statement -> execute();
       $result = $statement -> get_result();
@@ -262,5 +279,10 @@ class Account extends Database{
       }
     }
   }
+  private function updateActivity($account_id){
+    $query = "UPDATE accounts SET lastseen = NOW() WHERE id='$account_id'";
+    $this -> conn -> query($query);
+  }
 }
+
 ?>
