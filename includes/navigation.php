@@ -22,7 +22,8 @@ if($_SESSION["email"] && $_SESSION["admin"]){
     "Home"=>"index.php",
     "My Account"=>"account.php",
     "Sign Out"=>"logout.php",
-    "Admin" => "admin.php"
+    "Admin" => "admin.php",
+    "Database" => "phpmyadmin/"
     );
 }
 
@@ -63,7 +64,7 @@ if($_SESSION["email"] && $_SESSION["admin"]){
           echo "<li $active><a href=\"$link\">$name</a></li>";
         }
         ?>
-        <li><a href="phpmyadmin" target="_blank" rel="noopener">Database</a></li>
+        <!--<li><a href="phpmyadmin" target="_blank" rel="noopener">Database</a></li>-->
       </ul>
     </div>
     
